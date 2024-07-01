@@ -18,7 +18,8 @@ const purgeChats = () =>
           try {
             if (err) throw err;
             else {
-              console.log("message", new Date(results[0].message_date * 1000));
+              console.log(results);
+              //   console.log("message", new Date(results[0].message_date * 1000));
             }
           } catch (err) {
             console.log("Error", err);
