@@ -7,7 +7,7 @@ require("dotenv").config();
 const port = process.env.PORT;
 const interval = process.env.INTERVAL;
 
-const run = () => {
+const run = async () => {
   try {
     if (!fs.existsSync("/var/opt/remi/php82/run/php-fpm/www.sock")) {
       console.log("forum down");
@@ -17,6 +17,7 @@ const run = () => {
         if (stdout) console.log("stdout", stdout);
       });
     }
+    purgeChats();
   } catch (err) {
     console.log("An error occurred:\n", err);
   }
