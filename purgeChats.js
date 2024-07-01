@@ -13,12 +13,19 @@ const purgeChats = () =>
       sql.connect();
 
       sql.query(
-        "select * from xf_conversation_message limit 1",
+        "select message_date from xf_conversation_message limit 1",
         (err, results) => {
           try {
             if (err) throw err;
             else {
               console.log("tables", results);
+              console.log("now", new Date().getTime());
+              console.log(
+                "month",
+                new Date(
+                  new Date().setMonth(new Date().getMonth() - 1)
+                ).getTime()
+              );
             }
           } catch (err) {
             console.log("Error", err);
