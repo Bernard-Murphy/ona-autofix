@@ -7,6 +7,7 @@ const interval = process.env.INTERVAL;
 
 const run = () => {
   try {
+    console.log(fs.existsSync("/var/opt/remi/php82/run/php-fpm"));
   } catch (err) {
     console.log("An error occurred:\n", err);
   }
