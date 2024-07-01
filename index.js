@@ -4,6 +4,8 @@ const purgeChats = require("./purgeChats");
 const app = require("express")();
 require("dotenv").config();
 
+// sudo "$(which node)" index.js
+
 const port = process.env.PORT;
 const interval = process.env.INTERVAL;
 
