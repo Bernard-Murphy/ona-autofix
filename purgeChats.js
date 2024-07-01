@@ -26,6 +26,7 @@ const purgeChats = () =>
                   new Date().setMonth(new Date().getMonth() - 1)
                 ).getTime()
               );
+              console.log("message", new Date(results[0].message_date));
             }
           } catch (err) {
             console.log("Error", err);
