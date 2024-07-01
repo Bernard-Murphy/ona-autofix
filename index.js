@@ -1,5 +1,6 @@
 const fs = require("fs");
 const { exec } = require("child_process");
+const purgeChats = require("./purgeChats");
 const app = require("express")();
 require("dotenv").config();
 
