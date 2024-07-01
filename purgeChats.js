@@ -12,16 +12,19 @@ const purgeChats = () =>
 
       sql.connect();
 
-      sql.query("SHOW TABLES", (err, results) => {
-        try {
-          if (err) throw err;
-          else {
-            console.log("tables", results);
+      sql.query(
+        "select * from xf_conversation_message limit 1",
+        (err, results) => {
+          try {
+            if (err) throw err;
+            else {
+              console.log("tables", results);
+            }
+          } catch (err) {
+            console.log("Error", err);
           }
-        } catch (err) {
-          console.log("Error", err);
         }
-      });
+      );
 
       sql.end();
     } catch (err) {
