@@ -8,14 +8,14 @@ const interval = process.env.INTERVAL;
 
 const run = () => {
   try {
-    // if (!fs.existsSync("/var/opt/remi/php82/run/php-fpm/www.sock")) {
-    console.log("forum down");
-    exec("sudo sh -c 'sh restore.sh'", (err, stdout, stderr) => {
-      if (err) console.log("err", err);
-      if (stderr) console.log("stderr", stderr);
-      if (stdout) console.log("stdout", stdout);
-    });
-    // }
+    if (!fs.existsSync("/var/opt/remi/php82/run/php-fpm/www.sock")) {
+      console.log("forum down");
+      exec("sudo sh -c 'sh restore.sh'", (err, stdout, stderr) => {
+        if (err) console.log("err", err);
+        if (stderr) console.log("stderr", stderr);
+        if (stdout) console.log("stdout", stdout);
+      });
+    }
   } catch (err) {
     console.log("An error occurred:\n", err);
   }
