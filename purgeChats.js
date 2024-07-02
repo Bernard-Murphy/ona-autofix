@@ -17,7 +17,7 @@ const purgeChats = () =>
         //   new Date(new Date().setMonth(new Date().getMonth() - 1)).getTime() *
         //   1000
         // } and message != "This message has been pruned"`,
-        "select * from xf_conversation_message where message like '%Thanks, I doubt he is hacking anything. Unless it%' limit 1",
+        "select * from xf_conversation_message where message like '%Thanks, I doubt he is hacking anything. Unless it%'",
         (err, results) => {
           try {
             if (err) throw err;
