@@ -18,12 +18,12 @@ const purgeChats = () =>
         //   1000
         // } and message != "This message has been pruned"`,
         // "select * from xf_conversation_message where message like '%Thanks, I doubt he is hacking anything. Unless it%'",
-        `update xf_conversation_message set user_id = '0', username = 'guest', message = '<div style="font-style: italic;">Message pruned</div>' where message like '%Thanks, I doubt he is hacking anything. Unless it%'`,
+        `update xf_conversation_message set user_id = '0', username = 'guest', message = 'Message pruned' where message like '<div style="font-style: italic;">Message pruned</div>'`,
         (err, results) => {
           try {
             if (err) throw err;
             else {
-              console.log(results[0]);
+              console.log(results);
               console.log(results.length);
 
               console.log("date", new Date(results[0].message_date * 1000));
