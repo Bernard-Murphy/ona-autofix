@@ -13,12 +13,10 @@ const purgeChats = () =>
       sql.connect();
 
       sql.query(
-        // `select * from xf_conversation_message where message_date < ${
-        //   new Date(new Date().setMonth(new Date().getMonth() - 1)).getTime() *
-        //   1000
-        // } and message != "This message has been pruned"`,
-        // "select * from xf_conversation_message where message like '%Thanks, I doubt he is hacking anything. Unless it%'",
-        `update xf_conversation_message set user_id = '0', username = 'guest', message = 'Message pruned' where message like '<div style="font-style: italic;">Message pruned</div>'`,
+        `update xf_conversation_message set user_id = "0", username = "guest", message = "This message has been pruned" where message_date < ${
+          new Date(new Date().setMonth(new Date().getMonth() - 1)).getTime() *
+          1000
+        } and message != "This message has been pruned"`,
         (err, results) => {
           try {
             if (err) throw err;

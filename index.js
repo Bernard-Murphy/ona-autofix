@@ -1,24 +1,24 @@
 const fs = require("fs");
 const { exec } = require("child_process");
-const purgeChats = require("./purgeChats");
+// const purgeChats = require("./purgeChats");
 const app = require("express")();
 require("dotenv").config();
 
-// sudo "$(which node)" index.js
+// sudo "$(which node)" index.js > autofix.log
 const port = process.env.PORT;
 const interval = process.env.INTERVAL;
 
 const run = async () => {
   try {
     if (!fs.existsSync("/var/opt/remi/php82/run/php-fpm/www.sock")) {
-      console.log("forum down");
+      console.log("Forum down", new Date());
       exec("sudo sh -c 'sh restore.sh'", (err, stdout, stderr) => {
         if (err) console.log("err", err);
         if (stderr) console.log("stderr", stderr);
         if (stdout) console.log("stdout", stdout);
       });
     }
-    purgeChats();
+    // purgeChats();
   } catch (err) {
     console.log("An error occurred:\n", err);
   }
@@ -27,6 +27,6 @@ const run = async () => {
 
 app.listen(port, () => {
   console.log("ona forum autofix running on port", port);
-  console.log(`Will run every ${interval} minutes`);
+  console.log(`Running every ${interval} minutes`);
   run();
 });
