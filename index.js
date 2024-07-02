@@ -18,7 +18,7 @@ const run = async () => {
         if (stdout) console.log("stdout", stdout);
       });
     }
-    purgeChats();
+    await purgeChats();
   } catch (err) {
     console.log("An error occurred:\n", err);
   }
